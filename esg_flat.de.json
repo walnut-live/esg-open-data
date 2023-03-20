@@ -1,0 +1,1540 @@
+{
+    "initial": {
+        "item": {
+            "id": "initial",
+            "title": "Wurden die Nachhaltigkeitskonzepte für Finanzprodukte erläutert?",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Ihr Berater muss Ihnen die Nachhaltigkeitskonzepte für Finanzprodukte erläutern, bevor Sie fortfahren können."
+        },
+        "parent": null,
+        "answers": [
+            "initial_yes",
+            "initial_no"
+        ]
+    },
+    "initial_yes": {
+        "item": {
+            "id": "initial_yes",
+            "title": "Ja, Konzepte wurden erläutert",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "initial",
+        "answers": [
+            "consider"
+        ]
+    },
+    "consider": {
+        "answers": [
+            "consider_no",
+            "consider_yes"
+        ],
+        "item": {
+            "id": "consider",
+            "title": "Sollen die Nachhaltigkeitspräferenzen bei der Auswahl von passenden Finanzprodukten berücksichtigt werden?",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Ihre persönliche Nachhaltigkeitspräferenz kann ein oder mehrere Finanzprodukte von der Auswahl ausschließen."
+        },
+        "parent": "initial_yes"
+    },
+    "consider_no": {
+        "item": {
+            "id": "consider_no",
+            "title": "Nein, keine Nachhaltigkeitspräferenzen berücksichtigen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "consider"
+    },
+    "consider_yes": {
+        "answers": [
+            "taxonomie_question",
+            "sustainability_min_standard_question",
+            "pai_set"
+        ],
+        "item": {
+            "id": "consider_yes",
+            "title": "Ja, Nachhaltigkeitspräferenzen berücksichtigen",
+            "type": "and",
+            "gate": "and"
+        },
+        "parent": "consider"
+    },
+    "taxonomie_question": {
+        "item": {
+            "id": "taxonomie_question",
+            "title": "EU-Taxonomieverordnung",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Die EU-Taxonomie schafft einheitliche Kriterien für die Beurteilung von nachhaltigem Handelns eines Wirtschaftsunternehmens. Die Unternehmen müssen für eine nachhaltige wirtschaftliche Tätigkeit zu einem der folgenden sechs Umweltziele leisten, ohne gegen die anderen zu verstoßen:<br\/>\r\n<ol>\r\n<li>Klimaschutz<\/li>\r\n<li>Anpassung an den Klimawandel<\/li>\r\n<li>Nachhaltige Nutzung von Wasser- und Meeresressourcen<\/li>\r\n<li>Wandel zu einer Kreislaufwirtschaft<\/li>\r\n<li>Vermeidung und Verminderung von Umweltverschmutzung<\/li>\r\n<li>Schutz und Wiederherstellung der Biodiversität<\/li>\r\n<\/ol>\r\nDie folgende Auswahl gibt an, zu welchem Prozentsatz die jeweiligen Unternehmen der Finanzprodukte die EU-Taxonomie in ihrem wirtschaftlichen Handeln erfüllen."
+        },
+        "parent": "consider_yes",
+        "answers": [
+            "taxonomie"
+        ]
+    },
+    "taxonomie": {
+        "item": {
+            "id": "taxonomie",
+            "title": "Bitte berücksichtigen Sie Finanzprodukte mit einem Mindestanteil an Taxonomie konformer Investitionen",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "taxonomie_question"
+    },
+    "sustainability_min_standard_question": {
+        "answers": [
+            "sustainability_min_standard"
+        ],
+        "item": {
+            "id": "sustainability_min_standard_question",
+            "title": "Nachhaltige Investitionen gemäß Offenlegungsverordnung",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Dabei handelt es sich entweder um eine wirtschaftliche Tätigkeit, die beiträgt zur Erreichung eines Umweltziels oder eines sozialen Ziels oder alternativ um eine Investition in Humankapital oder zugunsten wirtschaftlich oder sozial benachteiligter Bevölkerungsgruppen. Beides soll keine erhebliche Beeinträchtigung von Umweltzielen oder sozialen Zielen zur Folge haben. Und zusätzlich wird die Verfahrensweise einer guten Unternehmensführung angewendet.<br \/><br \/>\r\nBitte berücksichtigen Sie Finanzprodukte mit einem Mindestanteil an nachhaltigen Investitionen gemäß Art. 2 Nr. 17 Offenlegungsverordnung."
+        },
+        "parent": "consider_yes"
+    },
+    "sustainability_min_standard": {
+        "item": {
+            "id": "sustainability_min_standard",
+            "title": "Bitte berücksichtigen Sie Finanzprodukte mit einem Mindestanteil an nachhaltigen Investitionen gemäß Art. 2 Nr. 17 Offenlegungsverordnung.",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "sustainability_min_standard_question"
+    },
+    "pai_set": {
+        "answers": [
+            "pai_no_main_focus",
+            "pai_strategic",
+            "pai_selection"
+        ],
+        "item": {
+            "id": "pai_set",
+            "title": "Nachteilige Auswirkungen auf Nachhaltigkeitsfaktoren (PAI)",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Bitte berücksichtigen Sie Finanzprodukte, die die wichtigsten nachteiligen Auswirkungen auf Nachhaltigkeitsfaktoren (PAIs) berücksichtigen. <br \/>\r\nHierbei handelt es sich um Veröffentlichungen gemäß Art. 4 Verordnung (EU) 2019\/2088 über nachhaltigkeitsbezogene Offenlegungspflichten im Finanzdienstleistungssektor."
+        },
+        "parent": "consider_yes"
+    },
+    "pai_no_main_focus": {
+        "item": {
+            "id": "pai_no_main_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "pai_set"
+    },
+    "pai_strategic": {
+        "item": {
+            "id": "pai_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "pai_set"
+    },
+    "pai_selection": {
+        "answers": [
+            "climate_and_environment_issues",
+            "social_employment_issues",
+            "Investments_states_supranational_organizations",
+            "investments_real_estate_assets"
+        ],
+        "item": {
+            "id": "pai_selection",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "pai_set"
+    },
+    "climate_and_environment_issues": {
+        "item": {
+            "id": "climate_and_environment_issues",
+            "title": "Klima- und Umweltthemen",
+            "type": "question",
+            "gate": "xor",
+            "hint": ""
+        },
+        "parent": "pai_selection",
+        "answers": [
+            "climate_and_environment_issues_no_main_focus",
+            "climate_and_environment_issues_strategic",
+            "climate_and_environment_issues_or"
+        ]
+    },
+    "climate_and_environment_issues_no_main_focus": {
+        "item": {
+            "id": "climate_and_environment_issues_no_main_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues"
+    },
+    "climate_and_environment_issues_strategic": {
+        "item": {
+            "id": "climate_and_environment_issues_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues"
+    },
+    "climate_and_environment_issues_or": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse",
+            "biodiversity",
+            "water",
+            "waste"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_or",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "climate_and_environment_issues"
+    },
+    "climate_and_environment_issues_greenhouse": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse",
+            "title": "Treibhausgase",
+            "type": "question",
+            "gate": "xor",
+            "hint": "„Treibhausgasemissionen“ oder „THG-Emissionen“ bezeichnet Emissionen von Treibhausgas im Sinne des Artikels 3 Nummer 1 der Verordnung (EU) 2018\/842 des Europäischen Parlaments und des Rates.<br \/>\r\nInwieweit sollen Treibhause bei den Investitionen vermieden werden?"
+        },
+        "parent": "climate_and_environment_issues_or",
+        "answers": [
+            "climate_and_environment_issues_greenhouse_no_focus",
+            "climate_and_environment_issues_greenhouse_strategic",
+            "climate_and_environment_issues_greenhouse_details"
+        ]
+    },
+    "climate_and_environment_issues_greenhouse_no_focus": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse"
+    },
+    "climate_and_environment_issues_greenhouse_strategic": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse"
+    },
+    "climate_and_environment_issues_greenhouse_details": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse_greenhouse",
+            "climate_and_environment_issues_greenhouse_co2",
+            "climate_and_environment_issues_greenhouse_companies",
+            "climate_and_environment_issues_greenhouse_fossil",
+            "climate_and_environment_issues_greenhouse_energy"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_details",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "climate_and_environment_issues_greenhouse"
+    },
+    "climate_and_environment_issues_greenhouse_greenhouse": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_greenhouse",
+            "title": "Treibhausgas-Emissionen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Treibhausgas-Emissionen werden vom internationalen Berechnungstool GHG-Protocol in drei Kategorien oder Scopes unterteilt.<br \/>Inwieweit sollen diese bei den Investitionen berücksichtigt werden? "
+        },
+        "parent": "climate_and_environment_issues_greenhouse_details",
+        "answers": [
+            "climate_and_environment_issues_greenhouse_greenhouse_no_focus",
+            "climate_and_environment_issues_greenhouse_greenhouse_important",
+            "climate_and_environment_issues_greenhouse_greenhouse_scope_selection"
+        ]
+    },
+    "climate_and_environment_issues_greenhouse_greenhouse_no_focus": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_greenhouse_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_greenhouse"
+    },
+    "climate_and_environment_issues_greenhouse_greenhouse_important": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_greenhouse_important",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_greenhouse"
+    },
+    "climate_and_environment_issues_greenhouse_greenhouse_scope_selection": {
+        "answers": [
+            "scope1_selection",
+            "scope2_selection",
+            "scope3_selection"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_greenhouse_scope_selection",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_greenhouse"
+    },
+    "scope1_selection": {
+        "item": {
+            "id": "scope1_selection",
+            "title": "Scope 1 nachteilige Auswirkungen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Emissionen aus Quellen, die direkt im Besitz oder Geltungsbereich des Unternehmens sind. Dazu zählen die Emissionen aus stationären und mobilen Anlagen und flüchtige Emissionen.,"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_greenhouse_scope_selection",
+        "answers": [
+            "scope1_selection_no_focus",
+            "scope1_reduced",
+            "scope1_none"
+        ]
+    },
+    "scope1_selection_no_focus": {
+        "item": {
+            "id": "scope1_selection_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope1_selection"
+    },
+    "scope1_reduced": {
+        "item": {
+            "id": "scope1_reduced",
+            "title": "verringerte Scope 1 nachteilige Auswirkungen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope1_selection"
+    },
+    "scope1_none": {
+        "item": {
+            "id": "scope1_none",
+            "title": "keine Scope 1 nachteilige Auswirkungen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope1_selection"
+    },
+    "scope2_selection": {
+        "answers": [
+            "scope2_selection_no_focus",
+            "scope2_reduced",
+            "scope2_none"
+        ],
+        "item": {
+            "id": "scope2_selection",
+            "title": "Scope 2 nachteilige Auswirkungen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Indirekte Emissionen aus eingekaufter Energie für z.B. Strom, Wärme und Dampf."
+        },
+        "parent": "climate_and_environment_issues_greenhouse_greenhouse_scope_selection"
+    },
+    "scope2_selection_no_focus": {
+        "item": {
+            "id": "scope2_selection_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope2_selection"
+    },
+    "scope2_reduced": {
+        "item": {
+            "id": "scope2_reduced",
+            "title": "verringerte Scope 2 nachteilige Auswirkungen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope2_selection"
+    },
+    "scope2_none": {
+        "item": {
+            "id": "scope2_none",
+            "title": "keine Scope 2 nachteilige Auswirkungen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope2_selection"
+    },
+    "scope3_selection": {
+        "answers": [
+            "scope3_selection_no_focus",
+            "scope3_reduced",
+            "scope3_none"
+        ],
+        "item": {
+            "id": "scope3_selection",
+            "title": "Scope 3 nachteilige Auswirkungen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Indirekte Emissionen innerhalb der Wertschöpfungskette, die aus Wareneinkäufen, Logistik oder Abfallmanagement resultieren."
+        },
+        "parent": "climate_and_environment_issues_greenhouse_greenhouse_scope_selection"
+    },
+    "scope3_selection_no_focus": {
+        "item": {
+            "id": "scope3_selection_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope3_selection"
+    },
+    "scope3_reduced": {
+        "item": {
+            "id": "scope3_reduced",
+            "title": "verringerte Scope 3 nachteilige Auswirkungen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope3_selection"
+    },
+    "scope3_none": {
+        "item": {
+            "id": "scope3_none",
+            "title": "keine Scope 3 nachteilige Auswirkungen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "scope3_selection"
+    },
+    "climate_and_environment_issues_greenhouse_co2": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse_co2_no_focus",
+            "climate_and_environment_issues_greenhouse_co2_important",
+            "climate_and_environment_issues_greenhouse_co2_individual"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_co2",
+            "title": "CO2 Fußabdruck",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Der CO2-Fußabdruck ist ein Maß für den Gesamtbetrag von Kohlenstoffdioxid-Emissionen, welche direkt bzw. indirekt durch Aktivitäten oder Lebensstadien von Produkten oder Personen entstehen bzw. verursacht werden.<br \/>Inwieweit soll dieser bei den Investitionen berücksichtigt werden?"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_details"
+    },
+    "climate_and_environment_issues_greenhouse_co2_no_focus": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_co2_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_co2"
+    },
+    "climate_and_environment_issues_greenhouse_co2_important": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_co2_important",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_co2"
+    },
+    "climate_and_environment_issues_greenhouse_co2_individual": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse_co2_details"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_co2_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_co2"
+    },
+    "climate_and_environment_issues_greenhouse_co2_details": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse_co2_details_no_focus",
+            "climate_and_environment_issues_greenhouse_co2_reduced",
+            "climate_and_environment_issues_greenhouse_co2_none"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_co2_details",
+            "title": "CO2 Fußabdruck nachteilige Auswirkungen",
+            "type": "question",
+            "gate": "xor",
+            "hint": ""
+        },
+        "parent": "climate_and_environment_issues_greenhouse_co2_individual"
+    },
+    "climate_and_environment_issues_greenhouse_co2_details_no_focus": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_co2_details_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_co2_details"
+    },
+    "climate_and_environment_issues_greenhouse_co2_reduced": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_co2_reduced",
+            "title": "verringerte CO2 nachteilige Auswirkungen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_co2_details"
+    },
+    "climate_and_environment_issues_greenhouse_co2_none": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_co2_none",
+            "title": "keine CO2 nachteilige Auswirkungen",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_co2_details"
+    },
+    "climate_and_environment_issues_greenhouse_companies": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse_companies_no_focus",
+            "climate_and_environment_issues_greenhouse_companies_important",
+            "climate_and_environment_issues_greenhouse_companies_individual"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_companies",
+            "title": "Treibhaus Intensität durch beteiligte Unternehmen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Die Treibhaus Intensität gibt an, wie hoch die Treibhaus-Emissionen je investierte Mio. € sind. <br\/>Inwieweit soll diese bei den Investitionen berücksichtigt werden?"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_details"
+    },
+    "climate_and_environment_issues_greenhouse_companies_no_focus": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_companies_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_companies"
+    },
+    "climate_and_environment_issues_greenhouse_companies_important": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_companies_important",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_companies"
+    },
+    "climate_and_environment_issues_greenhouse_companies_individual": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_companies_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "xor",
+            "gate": "xor"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_companies",
+        "answers": [
+            "climate_and_environment_issues_greenhouse_companies_details"
+        ]
+    },
+    "climate_and_environment_issues_greenhouse_companies_details": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse_companies_percentage"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_companies_details",
+            "title": "Individuelle Schwerpunkte für Treibhaus Intensität durch beteiligte Unternehmen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Die Eingabe der Treibhaus Intensität wird nachfolgend in 100 CO2-Äquivalente je Mio. € eingegeben. Inwieweit sollen diese bei den investitionen berücksichtigt werden?"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_companies_individual"
+    },
+    "climate_and_environment_issues_greenhouse_companies_percentage": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_companies_percentage",
+            "title": "",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 100,
+            "range_max": 0,
+            "unit": "CO₂-Äquivalente"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_companies_details"
+    },
+    "climate_and_environment_issues_greenhouse_fossil": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse_fossil_percentage"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_fossil",
+            "title": "Anteil der Investitionen in Unternehmen, die nicht im Bereich der fossilen Brennstoffe tätig sind",
+            "type": "question",
+            "gate": "xor",
+            "hint": "„Unternehmen, die im Sektor der fossilen Brennstoffe tätig sind“ bezeichnet Unternehmen, die Einkünfte aus der Exploration, dem Abbau, der Förderung, der Herstellung, der Verarbeitung, der Lagerung, der Raffination oder dem Vertrieb, einschließlich Transport, Lagerung und Handel von fossilen Brennstoffen gemäß Artikel 2 Nummer 62 der Verordnung (EU) 2018\/1999 des Europäischen Parlaments und des Rates erzielen."
+        },
+        "parent": "climate_and_environment_issues_greenhouse_details"
+    },
+    "climate_and_environment_issues_greenhouse_fossil_percentage": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_fossil_percentage",
+            "title": "",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_fossil"
+    },
+    "climate_and_environment_issues_greenhouse_energy": {
+        "answers": [
+            "climate_and_environment_issues_greenhouse_energy_percentage"
+        ],
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_energy",
+            "title": "Anteil des erneuerbaren Energie Verbrauchs",
+            "type": "question",
+            "gate": "xor",
+            "hint": "„Erneuerbare Energiequellen“ bezeichnet erneuerbare, nicht fossile Energiequellen, insbesondere Wind, Sonne (Solarthermie und Fotovoltaik) und geothermische Energie, Umgebungsenergie, Gezeiten-, Wellen- und sonstige Meeresenergie, Wasserkraft sowie Energie aus Biomasse, Deponiegas, Klärgas und Biogas.\r\nAnteil des erneuerbaren Energie Verbrauchs und der erneuerbaren Energieerzeugung der Beteiligungsunternehmen im Vergleich zu nicht-erneuerbaren Energiequellen ausgedrückt in Prozent."
+        },
+        "parent": "climate_and_environment_issues_greenhouse_details"
+    },
+    "climate_and_environment_issues_greenhouse_energy_percentage": {
+        "item": {
+            "id": "climate_and_environment_issues_greenhouse_energy_percentage",
+            "title": "Anteil des nicht-erneuerbaren Energie Verbrauchs und der nicht-erneuerbaren Energieerzeugung der Beteiligungsunternehmen im Vergleich zu erneuerbaren Energiequellen",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "climate_and_environment_issues_greenhouse_energy"
+    },
+    "biodiversity": {
+        "answers": [
+            "biodiversity_no_focus",
+            "biodiversity_strategic",
+            "biodiversity_individual"
+        ],
+        "item": {
+            "id": "biodiversity",
+            "title": "Biodiversität",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil der Investitionen in Beteiligungsunternehmen mit Standorten\/Geschäften in oder in der Nähe von biodiversitätsgefährdeten Gebieten, wenn die Aktivitäten dieser Beteiligungsunternehmen diese Gebiete negativ beeinflussen."
+        },
+        "parent": "climate_and_environment_issues_or"
+    },
+    "biodiversity_no_focus": {
+        "item": {
+            "id": "biodiversity_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "biodiversity"
+    },
+    "biodiversity_strategic": {
+        "item": {
+            "id": "biodiversity_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "biodiversity"
+    },
+    "biodiversity_individual": {
+        "answers": [
+            "biodiversity_individual_question"
+        ],
+        "item": {
+            "id": "biodiversity_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "xor",
+            "gate": "xor"
+        },
+        "parent": "biodiversity"
+    },
+    "biodiversity_individual_question": {
+        "item": {
+            "id": "biodiversity_individual_question",
+            "title": "Individueller Schwerpunkt für Biodiversität",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Welcher Anteil der Investitionen darf die Biodiversität nicht negativ beeinflussen?"
+        },
+        "parent": "biodiversity_individual",
+        "answers": [
+            "biodiversity_percentage"
+        ]
+    },
+    "biodiversity_percentage": {
+        "item": {
+            "id": "biodiversity_percentage",
+            "title": "Individueller Schwerpunkt für Biodiversität",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "biodiversity_individual_question"
+    },
+    "water": {
+        "answers": [
+            "water_percentage"
+        ],
+        "item": {
+            "id": "water",
+            "title": "Emissionen in Wasser",
+            "type": "question",
+            "gate": "xor",
+            "hint": "„Emissionen in Wasser“ bezeichnet direkte Emissionen von prioritären Stoffen im Sinne des Artikels 2 Nummer 30 der Richtlinie 2000\/60\/EG des Europäischen Parlaments und des Rates sowie direkte Emissionen von Nitraten, Phosphaten und Pestiziden.<br \/><br \/>Tonnen Emissionen in Wasser, die von den Unternehmen, in die investiert wird, pro investierter Million EUR verursacht werden."
+        },
+        "parent": "climate_and_environment_issues_or"
+    },
+    "water_percentage": {
+        "item": {
+            "id": "water_percentage",
+            "title": "Tonnen an Emissionen in das Wasser, die von den investierten Unternehmen erzeugt werden pro investierte Million EUR,",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 100,
+            "range_max": 0,
+            "unit": "t \/ Mio. €"
+        },
+        "parent": "water"
+    },
+    "waste": {
+        "answers": [
+            "waste_percentage"
+        ],
+        "item": {
+            "id": "waste",
+            "title": "Abfall",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Tonnen gefährlicher Abfälle, die von den investierten Unternehmen erzeugt werden pro investierte Million EUR, ausgedrückt als gewichteter Durchschnitt."
+        },
+        "parent": "climate_and_environment_issues_or"
+    },
+    "waste_percentage": {
+        "item": {
+            "id": "waste_percentage",
+            "title": "Gefährliche Abfälle pro investiertes Geld",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 100,
+            "range_max": 0,
+            "unit": "t \/ Mio. €"
+        },
+        "parent": "waste"
+    },
+    "social_employment_issues": {
+        "answers": [
+            "social_employment_issues_no_focus",
+            "social_employment_issues_strategic",
+            "social_employment_issues_individual"
+        ],
+        "item": {
+            "id": "social_employment_issues",
+            "title": "Soziale- und Beschäftigtenthemen",
+            "type": "question",
+            "gate": "xor",
+            "hint": ""
+        },
+        "parent": "pai_selection"
+    },
+    "social_employment_issues_no_focus": {
+        "item": {
+            "id": "social_employment_issues_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "social_employment_issues"
+    },
+    "social_employment_issues_strategic": {
+        "item": {
+            "id": "social_employment_issues_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "social_employment_issues"
+    },
+    "social_employment_issues_individual": {
+        "answers": [
+            "un_oecd_violence",
+            "un_oecd_process",
+            "gender_gap_main",
+            "gender_diversity",
+            "controversial_weapons"
+        ],
+        "item": {
+            "id": "social_employment_issues_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "social_employment_issues"
+    },
+    "un_oecd_violence": {
+        "answers": [
+            "un_oecd_question_no_focus",
+            "un_oecd_question_strategic",
+            "un_oecd_question_individual"
+        ],
+        "item": {
+            "id": "un_oecd_violence",
+            "title": "Global Compact und OECD Verstöße",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Verstöße gegen den UN Global Compact Prinzipien und Organisation für Wirtschaft Zusammenarbeit und Entwicklung (OECD) Leitsätze für multinationale Unternehmen"
+        },
+        "parent": "social_employment_issues_individual"
+    },
+    "un_oecd_question_no_focus": {
+        "item": {
+            "id": "un_oecd_question_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "un_oecd_violence"
+    },
+    "un_oecd_question_strategic": {
+        "item": {
+            "id": "un_oecd_question_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "un_oecd_violence"
+    },
+    "un_oecd_question_individual": {
+        "answers": [
+            "un_oecd_question_individual_question"
+        ],
+        "item": {
+            "id": "un_oecd_question_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "un_oecd_violence"
+    },
+    "un_oecd_question_individual_question": {
+        "item": {
+            "id": "un_oecd_question_individual_question",
+            "title": "Verstöße gegen die UNGC-Prinzipien oder der OECD-Leitsätze",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil der Investitionen in Beteiligungsunternehmen Unternehmen, die nicht in Verstöße gegen die UNGC-Prinzipien oder der OECD-Leitsätze für Multinationale Unternehmen beteiligt sind"
+        },
+        "parent": "un_oecd_question_individual",
+        "answers": [
+            "un_oecd_percentage"
+        ]
+    },
+    "un_oecd_percentage": {
+        "item": {
+            "id": "un_oecd_percentage",
+            "title": "Anteil der Investitionen in Unternehmen, in die investiert wird, die nicht gegen die UNGC-Grundsätze oder gegen die OECD-Leitsätze für multinationale Unternehmen verstößen.",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "un_oecd_question_individual_question"
+    },
+    "un_oecd_process": {
+        "answers": [
+            "un_oecd_process_no_focus",
+            "un_oecd_process_strategic",
+            "un_oecd_process_individual"
+        ],
+        "item": {
+            "id": "un_oecd_process",
+            "title": "Global Compact und OECD Prozesssicherheit",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Fehlen von Verfahren und Mechanismen zur Überwachung der Einhaltung der Prinzipien des UN Global Compact und der OECD-Leitsätze für multinationale Unternehmen"
+        },
+        "parent": "social_employment_issues_individual"
+    },
+    "un_oecd_process_no_focus": {
+        "item": {
+            "id": "un_oecd_process_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "un_oecd_process"
+    },
+    "un_oecd_process_strategic": {
+        "item": {
+            "id": "un_oecd_process_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "un_oecd_process"
+    },
+    "un_oecd_process_individual": {
+        "answers": [
+            "un_oecd_process_question"
+        ],
+        "item": {
+            "id": "un_oecd_process_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "un_oecd_process"
+    },
+    "un_oecd_process_question": {
+        "item": {
+            "id": "un_oecd_process_question",
+            "title": "Individueller Schwerpunkt für Prozesssicherheit gegen Global Compact und OECD Verstöße",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil an Investitionen, bei denen eine  Global Compact und OECD Prozesssicherheit vorliegt. Hierbei handelt es sich um Maßnahmen zur Überwachung der Einhaltung der UNGC-Prinzipien oder der OECD-Leitsätze für multinationale Unternehmen oder Mechanismen zur Bearbeitung von Beschwerden, um gegen Verstöße gegen die UNGC-Prinzipien oder die OECD-Leitsätze für multinationale Unternehmen vorzugehen."
+        },
+        "parent": "un_oecd_process_individual",
+        "answers": [
+            "un_oecd_process_percentage"
+        ]
+    },
+    "un_oecd_process_percentage": {
+        "item": {
+            "id": "un_oecd_process_percentage",
+            "title": "Anteil der Investitionen in Unternehmen, in die investiert wird, die keine Richtlinien zur Überwachung der Einhaltung der UNGC-Grundsätze und der OECD-Leitsätze für multinationale Unternehmen oder keine Verfahren zur Bearbeitung von Beschwerden wegen Verstößen gegen die UNGC-Grundsätze und OECD-Leitsätze für multinationale Unternehmen eingerichtet haben",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "un_oecd_process_question"
+    },
+    "gender_gap_main": {
+        "answers": [
+            "gender_gap_no_focus",
+            "gender_gap_strategic",
+            "gender_gap_or"
+        ],
+        "item": {
+            "id": "gender_gap_main",
+            "title": "Unbereinigtes geschlechtsspezifisches Lohngefälle",
+            "type": "question",
+            "gate": "xor",
+            "hint": "„Unbereinigtes geschlechtsspezifisches Verdienstgefälle“ bezeichnet die Differenz zwischen dem durchschnittlichen Bruttostundenverdienst männlicher und weiblicher Beschäftigter, ausgedrückt in Prozent des durchschnittlichen Bruttostundenverdiensts der männlichen Beschäftigten."
+        },
+        "parent": "social_employment_issues_individual"
+    },
+    "gender_gap_no_focus": {
+        "item": {
+            "id": "gender_gap_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "gender_gap_main"
+    },
+    "gender_gap_strategic": {
+        "item": {
+            "id": "gender_gap_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "gender_gap_main"
+    },
+    "gender_gap_or": {
+        "answers": [
+            "gender_gap_question"
+        ],
+        "item": {
+            "id": "gender_gap_or",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "gender_gap_main"
+    },
+    "gender_gap_question": {
+        "item": {
+            "id": "gender_gap_question",
+            "title": "Individueller Schwerpunkt für unbereinigtes geschlechtsspezifisches Lohngefälle",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil an Investitionen, bei denen es kein unbereinigtes geschlechtsspezifisches Lohngefälle gibt."
+        },
+        "parent": "gender_gap_or",
+        "answers": [
+            "gender_gap_percentage"
+        ]
+    },
+    "gender_gap_percentage": {
+        "item": {
+            "id": "gender_gap_percentage",
+            "title": "Durchschnittliches unbereinigtes geschlechtsspezifisches Lohngefälle von Unternehmen, in die investiert wird",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "gender_gap_question"
+    },
+    "gender_diversity": {
+        "answers": [
+            "gender_diversity_no_focus",
+            "gender_diversity_strategic",
+            "gender_diversity_or"
+        ],
+        "item": {
+            "id": "gender_diversity",
+            "title": "Geschlechtervielfalt in den Leitungs- und Kontrollorganen",
+            "type": "question",
+            "gate": "xor",
+            "hint": ""
+        },
+        "parent": "social_employment_issues_individual"
+    },
+    "gender_diversity_no_focus": {
+        "item": {
+            "id": "gender_diversity_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "gender_diversity"
+    },
+    "gender_diversity_strategic": {
+        "item": {
+            "id": "gender_diversity_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "gender_diversity"
+    },
+    "gender_diversity_or": {
+        "answers": [
+            "gender_diversity_question"
+        ],
+        "item": {
+            "id": "gender_diversity_or",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "gender_diversity"
+    },
+    "gender_diversity_question": {
+        "item": {
+            "id": "gender_diversity_question",
+            "title": "Individueller Schwerpunkt für die Geschlechtervielfalt in Führungspositionen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil an Investitionen, bei denen in den Leitungs- und Kontrollorganen das Verhältnis von Frauen zu Männern ausgewogen ist."
+        },
+        "parent": "gender_diversity_or",
+        "answers": [
+            "gender_diversity_percentage"
+        ]
+    },
+    "gender_diversity_percentage": {
+        "item": {
+            "id": "gender_diversity_percentage",
+            "title": "Geschlechtervielfalt im Vorstand",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "gender_diversity_question"
+    },
+    "controversial_weapons": {
+        "answers": [
+            "controversial_weapons_no_focus",
+            "controversial_weapons_strategic",
+            "controversial_weapons_individual"
+        ],
+        "item": {
+            "id": "controversial_weapons",
+            "title": "Exposition gegenüber umstrittenen Waffen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Exposition gegenüber umstrittenen Waffen (Antipersonenminen, Streumunition, chemische Waffen und biologische Waffen)"
+        },
+        "parent": "social_employment_issues_individual"
+    },
+    "controversial_weapons_no_focus": {
+        "item": {
+            "id": "controversial_weapons_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "controversial_weapons"
+    },
+    "controversial_weapons_strategic": {
+        "item": {
+            "id": "controversial_weapons_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "controversial_weapons"
+    },
+    "controversial_weapons_individual": {
+        "answers": [
+            "controversial_weapons_individual_question"
+        ],
+        "item": {
+            "id": "controversial_weapons_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "controversial_weapons"
+    },
+    "controversial_weapons_individual_question": {
+        "item": {
+            "id": "controversial_weapons_individual_question",
+            "title": "Individueller Schwerpunkt für umstrittene Waffen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil der Investitionen in Unternehmen, die nicht an der Herstellung oder dem Verkauf von umstrittenen Waffen beteiligt sind."
+        },
+        "parent": "controversial_weapons_individual",
+        "answers": [
+            "controversial_weapons_percentage"
+        ]
+    },
+    "controversial_weapons_percentage": {
+        "item": {
+            "id": "controversial_weapons_percentage",
+            "title": "Anteil der Investitionen in Unternehmen, die an der Herstellung oder dem Verkauf von umstrittenen Waffen beteiligt sind",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "controversial_weapons_individual_question"
+    },
+    "Investments_states_supranational_organizations": {
+        "answers": [
+            "Investments_states_supranational_companies_no_focus",
+            "Investments_states_supranational_strategy",
+            "investments_states_supranational_companies_details"
+        ],
+        "item": {
+            "id": "Investments_states_supranational_organizations",
+            "title": "Investitionen in Staaten und supranationale Organisationen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Supranationale Organisationen sind internationale Organisationen, die von mehreren Staaten gegründet wurden und über den Staaten stehen, um gemeinsame Ziele auf politischer, wirtschaftlicher oder sozialer Ebene zu erreichen. Beispiele für Investitionen in Staaten und supranationale Organisationen sind Staatsanleihen von Ländern bzw. supranationalen Organisationen wie der Europäischen Union."
+        },
+        "parent": "pai_selection"
+    },
+    "Investments_states_supranational_companies_no_focus": {
+        "item": {
+            "id": "Investments_states_supranational_companies_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "Investments_states_supranational_organizations"
+    },
+    "Investments_states_supranational_strategy": {
+        "item": {
+            "id": "Investments_states_supranational_strategy",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "Investments_states_supranational_organizations"
+    },
+    "investments_states_supranational_companies_details": {
+        "answers": [
+            "investments_states_supranational_companies_greenhouse",
+            "investments_states_supranational_companies_social_violations"
+        ],
+        "item": {
+            "id": "investments_states_supranational_companies_details",
+            "title": "individuelle Schwerpunkte",
+            "type": "or",
+            "gate": "or"
+        },
+        "parent": "Investments_states_supranational_organizations"
+    },
+    "investments_states_supranational_companies_greenhouse": {
+        "item": {
+            "id": "investments_states_supranational_companies_greenhouse",
+            "title": "Treibhausintensität",
+            "type": "question",
+            "gate": "xor",
+            "hint": "THG-Emissionsintensität der Länder, in die investiert wird"
+        },
+        "parent": "investments_states_supranational_companies_details",
+        "answers": [
+            "investments_states_supranational_companies_greenhouse_no_focus",
+            "investments_states_supranational_companies_greenhouse_strategic",
+            "investments_states_supranational_companies_greenhouse_xor"
+        ]
+    },
+    "investments_states_supranational_companies_greenhouse_no_focus": {
+        "item": {
+            "id": "investments_states_supranational_companies_greenhouse_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "investments_states_supranational_companies_greenhouse"
+    },
+    "investments_states_supranational_companies_greenhouse_strategic": {
+        "item": {
+            "id": "investments_states_supranational_companies_greenhouse_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "investments_states_supranational_companies_greenhouse"
+    },
+    "investments_states_supranational_companies_greenhouse_xor": {
+        "item": {
+            "id": "investments_states_supranational_companies_greenhouse_xor",
+            "title": "individuelle Schwerpunkte",
+            "type": "xor",
+            "gate": "xor"
+        },
+        "parent": "investments_states_supranational_companies_greenhouse",
+        "answers": [
+            "investments_states_supranational_companies_greenhouse_individual"
+        ]
+    },
+    "investments_states_supranational_companies_greenhouse_individual": {
+        "answers": [
+            "investments_states_supranational_companies_greenhouse_intensive"
+        ],
+        "item": {
+            "id": "investments_states_supranational_companies_greenhouse_individual",
+            "title": "Schwerpunkte individuell setzen für die Treibhausintensität",
+            "type": "question",
+            "gate": "xor",
+            "hint": ""
+        },
+        "parent": "investments_states_supranational_companies_greenhouse_xor"
+    },
+    "investments_states_supranational_companies_greenhouse_intensive": {
+        "item": {
+            "id": "investments_states_supranational_companies_greenhouse_intensive",
+            "title": "Treibhausintensität der Länder, in die investierten wird",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 1000,
+            "unit": "CO2 eq \/ €"
+        },
+        "parent": "investments_states_supranational_companies_greenhouse_individual"
+    },
+    "investments_states_supranational_companies_social_violations": {
+        "answers": [
+            "investments_states_supranational_companies_social_violations_no_focus",
+            "investments_states_supranational_companies_social_violations_strategic",
+            "investments_states_supranational_companies_social_violations_individual"
+        ],
+        "item": {
+            "id": "investments_states_supranational_companies_social_violations",
+            "title": "Soziale Verstöße in den Investitionsländern",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Inwieweit sollen bei den Investitionen soziale Verstöße in den Investitionsländern vermieden werden?"
+        },
+        "parent": "investments_states_supranational_companies_details"
+    },
+    "investments_states_supranational_companies_social_violations_no_focus": {
+        "item": {
+            "id": "investments_states_supranational_companies_social_violations_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "investments_states_supranational_companies_social_violations"
+    },
+    "investments_states_supranational_companies_social_violations_strategic": {
+        "item": {
+            "id": "investments_states_supranational_companies_social_violations_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "investments_states_supranational_companies_social_violations"
+    },
+    "investments_states_supranational_companies_social_violations_individual": {
+        "item": {
+            "id": "investments_states_supranational_companies_social_violations_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "xor",
+            "gate": "xor"
+        },
+        "parent": "investments_states_supranational_companies_social_violations",
+        "answers": [
+            "investments_states_supranational_companies_social_violations_question"
+        ]
+    },
+    "investments_states_supranational_companies_social_violations_question": {
+        "answers": [
+            "investments_states_supranational_companies_social_violations_percentage"
+        ],
+        "item": {
+            "id": "investments_states_supranational_companies_social_violations_question",
+            "title": "Beteiligte Länder, die nicht von sozialen Verstößen betroffen sind",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anzahl der Länder, in die investiert wird, die nach Maßgabe internationaler Verträge und Übereinkommen, der Grundsätze der Vereinten Nationen oder, falls anwendbar, nationaler Rechtsvorschriften nicht gegen soziale Bestimmungen verstoßen (absolute Zahl und relative Zahl, geteilt durch alle Länder, in die investiert wird)"
+        },
+        "parent": "investments_states_supranational_companies_social_violations_individual"
+    },
+    "investments_states_supranational_companies_social_violations_percentage": {
+        "item": {
+            "id": "investments_states_supranational_companies_social_violations_percentage",
+            "title": "Anzahl der Länder, in die investiert wurde die von sozialen Verstößen betroffen sind (absolute Zahl und relative Anzahl geteilt durch alle Beteiligungsländer Länder), wie sie in internationalen internationalen Verträgen und Konventionen, den Grundsätzen der Vereinten Nationen Grundsätze und, falls zutreffend nationalem Recht",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "investments_states_supranational_companies_social_violations_question"
+    },
+    "investments_real_estate_assets": {
+        "answers": [
+            "investments_real_estate_assets_no_focus",
+            "investments_real_estate_assets_strategic",
+            "investments_real_estate_assets_individual"
+        ],
+        "item": {
+            "id": "investments_real_estate_assets",
+            "title": "Indikatoren für Investitionen in Immobilienvermögen",
+            "type": "question",
+            "gate": "xor",
+            "hint": ""
+        },
+        "parent": "pai_selection"
+    },
+    "investments_real_estate_assets_no_focus": {
+        "item": {
+            "id": "investments_real_estate_assets_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "investments_real_estate_assets"
+    },
+    "investments_real_estate_assets_strategic": {
+        "item": {
+            "id": "investments_real_estate_assets_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "investments_real_estate_assets"
+    },
+    "investments_real_estate_assets_individual": {
+        "answers": [
+            "exposure_to_fossil_fuels_through_real_estate_investments",
+            "Exposure_to_energy_inefficient_real_estate_investments"
+        ],
+        "item": {
+            "id": "investments_real_estate_assets_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "xor",
+            "gate": "xor"
+        },
+        "parent": "investments_real_estate_assets"
+    },
+    "exposure_to_fossil_fuels_through_real_estate_investments": {
+        "item": {
+            "id": "exposure_to_fossil_fuels_through_real_estate_investments",
+            "title": "Exponierung gegenüber fossilen Brennstoffen durch Immobilienanlagen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil der Investitionen in Immobilien, die im Zusammenhang mit der Gewinnung, der Lagerung, dem Transport oder der Herstellung von fossilen Brennstoffen stehen"
+        },
+        "parent": "investments_real_estate_assets_individual",
+        "answers": [
+            "exposure_to_fossil_fuels_through_real_estate_investments_no_focus",
+            "exposure_to_fossil_fuels_through_real_estate_investments_important",
+            "exposure_to_fossil_fuels_through_real_estate_investments_individual"
+        ]
+    },
+    "exposure_to_fossil_fuels_through_real_estate_investments_no_focus": {
+        "item": {
+            "id": "exposure_to_fossil_fuels_through_real_estate_investments_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "exposure_to_fossil_fuels_through_real_estate_investments"
+    },
+    "exposure_to_fossil_fuels_through_real_estate_investments_important": {
+        "item": {
+            "id": "exposure_to_fossil_fuels_through_real_estate_investments_important",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "exposure_to_fossil_fuels_through_real_estate_investments"
+    },
+    "exposure_to_fossil_fuels_through_real_estate_investments_individual": {
+        "item": {
+            "id": "exposure_to_fossil_fuels_through_real_estate_investments_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "xor",
+            "gate": "xor"
+        },
+        "parent": "exposure_to_fossil_fuels_through_real_estate_investments",
+        "answers": [
+            "exposure_to_fossil_fuels_through_real_estate_investments_xor_question"
+        ]
+    },
+    "exposure_to_fossil_fuels_through_real_estate_investments_xor_question": {
+        "answers": [
+            "exposure_to_fossil_fuels_through_real_estate_investments_percentage"
+        ],
+        "item": {
+            "id": "exposure_to_fossil_fuels_through_real_estate_investments_xor_question",
+            "title": "Individueller Schwerpunkt für die exponierung gegenüber fossilen Brennstoffen durch Immobilienanlagen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil der Investitionen in Immobilien, die nicht mit der Gewinnung, der Lagerung, dem Transport oder der Herstellung von fossilen Brennstoffen zu tun haben."
+        },
+        "parent": "exposure_to_fossil_fuels_through_real_estate_investments_individual"
+    },
+    "exposure_to_fossil_fuels_through_real_estate_investments_percentage": {
+        "item": {
+            "id": "exposure_to_fossil_fuels_through_real_estate_investments_percentage",
+            "title": "Anteil der Investitionen in Immobilien Vermögenswerte, die mit der Gewinnung, Lagerung, Transport oder Herstellung von fossilen Brennstoffen",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "exposure_to_fossil_fuels_through_real_estate_investments_xor_question"
+    },
+    "Exposure_to_energy_inefficient_real_estate_investments": {
+        "answers": [
+            "exposure_to_energy_inefficient_real_estate_investments_no_focus",
+            "to_energy_inefficient_real_estate_investments_strategic",
+            "exposure_to_energy_inefficient_real_estate_investments_individual"
+        ],
+        "item": {
+            "id": "Exposure_to_energy_inefficient_real_estate_investments",
+            "title": "Investitionen in energieeffiziente Immobilienanlage",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Anteil der Investitionen in Immobilien mit guter Energieeffizienz"
+        },
+        "parent": "investments_real_estate_assets_individual"
+    },
+    "exposure_to_energy_inefficient_real_estate_investments_no_focus": {
+        "item": {
+            "id": "exposure_to_energy_inefficient_real_estate_investments_no_focus",
+            "title": "unwichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "Exposure_to_energy_inefficient_real_estate_investments"
+    },
+    "to_energy_inefficient_real_estate_investments_strategic": {
+        "item": {
+            "id": "to_energy_inefficient_real_estate_investments_strategic",
+            "title": "wichtig",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "Exposure_to_energy_inefficient_real_estate_investments"
+    },
+    "exposure_to_energy_inefficient_real_estate_investments_individual": {
+        "item": {
+            "id": "exposure_to_energy_inefficient_real_estate_investments_individual",
+            "title": "individuelle Schwerpunkte",
+            "type": "xor",
+            "gate": "xor"
+        },
+        "parent": "Exposure_to_energy_inefficient_real_estate_investments",
+        "answers": [
+            "to_energy_inefficient_real_estate_investments_question"
+        ]
+    },
+    "to_energy_inefficient_real_estate_investments_question": {
+        "answers": [
+            "exposure_to_energy_inefficient_real_estate_investments_percentage"
+        ],
+        "item": {
+            "id": "to_energy_inefficient_real_estate_investments_question",
+            "title": "Anteil der Investitionen in energieeffiziente Immobilienanlagen",
+            "type": "question",
+            "gate": "xor",
+            "hint": "Welcher Anteil der Investitionen in Immobilienanlagen soll energieeffizient sein?\r\n"
+        },
+        "parent": "exposure_to_energy_inefficient_real_estate_investments_individual"
+    },
+    "exposure_to_energy_inefficient_real_estate_investments_percentage": {
+        "item": {
+            "id": "exposure_to_energy_inefficient_real_estate_investments_percentage",
+            "title": "Anteil der Investitionen in energie- ineffiziente Immobilienanlagen",
+            "type": "answer_numbers",
+            "gate": "xor",
+            "range_min": 0,
+            "range_max": 100,
+            "unit": "%"
+        },
+        "parent": "to_energy_inefficient_real_estate_investments_question"
+    },
+    "initial_no": {
+        "item": {
+            "id": "initial_no",
+            "title": "Nein, Konzepte wurden nicht erläutert",
+            "type": "answer",
+            "gate": "xor"
+        },
+        "parent": "initial"
+    }
+}
